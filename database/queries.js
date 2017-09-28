@@ -3,7 +3,7 @@ const knex = require('./knex')
 const getChecksForUserAndLabels = ({userId, labels}) => {
   let query = knex
     .select('*')
-    .from('skill_checks')
+    .from('checks')
     .where({user_id: userId})
 
   if (labels && labels.length > 0)
@@ -42,5 +42,3 @@ module.exports = {
   getChecksForUserAndLabels,
   getCheckLogsForUsers,
 }
-
-
