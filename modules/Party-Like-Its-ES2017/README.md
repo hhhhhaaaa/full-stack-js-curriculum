@@ -24,10 +24,6 @@ webpack express tutorial -React
 
 ## Resources
 
-### Watch
-
-- https://www.youtube.com/watch?v=LtEP_-3a5CY
-
 ### Read
 
 - http://node.green/
