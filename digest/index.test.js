@@ -1,21 +1,18 @@
-const digest = require('.')
+const { loadDigest } = require('.')
+const { initializeDigestTest } = require('./test.helpers')
 
-describe('digest', function(){
+describe('loadDigest', function(){
 
   it('should be a function', function(){
-    expect(digest).to.be.a('function')
+    expect(loadDigest).to.be.a('function')
   })
 
   it('should return a promise', function(){
-    expect(digest()).to.be.an.instanceof(Promise)
+    expect(loadDigest()).to.be.an.instanceof(Promise)
   })
 
   describe('results', function(){
-    before(function(){
-      return digest().then(digest => {
-        this.digest = digest
-      })
-    })
+    beforeEach(initializeDigestTest)
 
     it('should return an object', function(){
       expect(this.digest).to.be.an('object')
