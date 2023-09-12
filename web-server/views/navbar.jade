@@ -38,7 +38,7 @@ nav.navbar.navbar-inverse(role='navigation')
             each phaseName in digest.phaseOrder
               - phase = digest.phases[phaseName]
               li
-                a(href='/phases/'+phase.number+'/') #{phase.humanName}
+                a(href=phase.path) Phase #{phase.number}
 
         li.dropdown
           a.dropdown-toggle(href='#', data-toggle='dropdown')

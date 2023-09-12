@@ -32,41 +32,9 @@ const loadDigest = () =>
     glossary: loadGlossary(),
   })
   .then(digest => {
-    digest.skillContexts = [
-      'Bash',
-      'Browser',
-      'Chrome Developer Tools',
-      'Compensation',
-      'CSS',
-      'Editor',
-      'Encryption',
-      'Express',
-      'General Programming',
-      'Git',
-      'GitHub',
-      'Google',
-      'Heroku',
-      'Hiring',
-      'HTML & CSS',
-      'HTML',
-      'HTTP',
-      'Interviews',
-      'JavaScript',
-      'Jobs',
-      'LinkedIn',
-      'Networking',
-      'Node',
-      'Regular Expression',
-      'shell',
-      'Slack',
-      'SQL',
-      'System Design',
-      'Terminal',
-      'tests',
-      'UNIX',
-      'postgresql',
-    ].sort()
-    digest.phaseOrder = ['foundations', 'practice', 'area 45'];
+    addModulesAndChallengesToSkills(digest)
+    addSkillsToPhases(digest)
+    console.log('DIGEST: done')
     return digest
   })
 

@@ -1,21 +1,23 @@
-const utils = require('./utils')
-const capitalize = require('lodash/capitalize');
+const {
+  readDirectoriesWithREADMEs,
+  extractListFromMarkdownSection,
+  removeREADMEMarkdown,
+  mapToObjectBy,
+} = require('./utils')
 
 module.exports = () =>
-  utils.getDirectoriesSync('/phases')
-    .then(phaseNumbersToPhases)
-    .then(loadDetails)
-    .then(indexByNumber)
+  readDirectoriesWithREADMEs('/phases')
+  .then(moveIdToNumber)
+  .then(extractChallenges)
+  .then(removeREADMEMarkdown)
+  .then(mapToObjectBy('number'))
 
-const phaseNumbersToPhases = phases => {
-  return phases.map(phase => (
-    {
-      number: phase,
-      path: `/phases/${phase}`,
-      humanName: capitalize(phase)
-    }
-  ))
-};
+const moveIdToNumber = phases => {
+  phases.forEach(phase => {
+    phase.number = Number(phase.id)
+  })
+  return phases
+}
 
 const extractChallenges = phases => {
   phases.forEach(phase => {
